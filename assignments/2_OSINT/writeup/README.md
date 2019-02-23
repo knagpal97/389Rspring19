@@ -38,7 +38,7 @@ With the ip address in hand, I proceeded to use nmap -p- to look for open ports.
 When inputting the ip address in Censys, it revealed the server runs in Ubuntu.
 Inputting the ip address in dnsdumpster returns the following flag: "CMSC389R-{h0w_2_iNt0_DNS_r3c0Rd5}"
 
-### Part 2 (75 pts)
+### Part 2 (55 pts)
 I was able to determine that the open port is 1337.  The username of the shell service is v0idcache, as expected.  I iterated through each password in rockyou.txt and discovered that the password is linkinpark.
 Once I got access to the shell, I checked the contents of each folder.  I found the file flag.txt in the home directory, which revealed the flag: Good work!  Here's a flag: CMSC389R-{brut3_f0rce_m4ster}
 
