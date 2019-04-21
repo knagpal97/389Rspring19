@@ -1,5 +1,3 @@
-# Writeup 3 - Operational Security and Social Engineering
-
 Name: Kush Nagpal
 Section: 0101
 
