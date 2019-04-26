@@ -4,12 +4,17 @@ import hashlib
 import string
 
 def crack():
-    hashes = # open and read hashes.txt
-    passwords = # open and read passwords.txt
+    f = open("hashes.txt",'r') # open and read hashes.txt
+    hashes = f.read().split("\n")
+    f = open("passwords.txt",'r')
+    passwords = f.read().split("\r\n") # open and read passwords.txt
     characters = string.ascii_lowercase
-
     for c in characters:
         for p in passwords:
+    		inp = c + p
+    		hashed = hashlib.sha256(inp).hexdigest()
+    		if hashed in hashes:
+    			print(c + "+" + p+ ":" + hashed)
             # crack hashes
 
             # print hashes as 'input:hash'
